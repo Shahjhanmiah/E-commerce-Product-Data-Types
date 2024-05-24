@@ -58,6 +58,15 @@ const productSchema = new Schema<TProduct>({
       type: Number,
       required: true,
     },
+
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
+    viewCount: {
+      type: Number,
+      default: 0,
+    },
   }
   
 });

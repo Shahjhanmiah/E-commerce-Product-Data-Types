@@ -7,7 +7,9 @@ import { ProductControllers } from './product.controller';
 
 
 router.post("/",ProductControllers.createProduct);
-// router.get("/", MovieControllers.getAllMovies);
-// router.get("/:slug", MovieControllers.getMovieBySlug);
+ router.get("/", ProductControllers.getAllProduct);
+ router.get("/:productId", ProductControllers.getProductId);
+ router.delete("/:productId", ProductControllers.deleteProductId);
+ router.put("/:productId", ProductControllers.putProductId);
 
 export const ProductRoutes = router;
