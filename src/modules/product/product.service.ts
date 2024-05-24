@@ -32,7 +32,7 @@ const createProduct = async (payload: TProduct) => {
 
 
     const searchTermProduct = async (searchTerm: string) => {
-      const result = await Product.findOne({searchTerm},{isUpdated:true});
+      const result = await Product.findOne({searchTerm});
       return result;
     }; 
 
@@ -44,7 +44,8 @@ const createProduct = async (payload: TProduct) => {
         getAllProduct,
         getProductId,
         deleteProductId,
-        putProductId
+        putProductId,
+        searchTermProduct
 
         
         

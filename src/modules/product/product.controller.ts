@@ -96,11 +96,37 @@ const createProduct = async (req: Request, res: Response) => {
     }
   };
 
+  //  Product  Search searchTerm
+
+  const searchTermProduct = async (req: Request, res: Response) => {
+    try {
+      const {search} = req.params
+      const result = await ProductServices.searchTermProduct(search);
+  
+      res.status(200).json({
+        success: true,
+        message: "Product are Search successfully !",
+        data: result,
+      });
+    } catch (err: any) {
+      res.status(500).json({
+        success: false,
+        message: "Could not fetch movies!",
+        error: err,
+      });
+    }
+  };
+
+
+
+  
+
   export const ProductControllers = {
     createProduct,
     getAllProduct,
     getProductId,
     deleteProductId,
-    putProductId
+    putProductId,
+    searchTermProduct
     
   };
