@@ -31,6 +31,12 @@ const createProduct = async (payload: TProduct) => {
     }; 
 
 
+    const searchTermProduct = async (searchTerm: string) => {
+      const result = await Product.findOne({searchTerm},{isUpdated:true});
+      return result;
+    }; 
+
+
 
 
      export const ProductServices = {
