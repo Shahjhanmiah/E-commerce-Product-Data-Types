@@ -1,18 +1,65 @@
 
 import { Request, Response } from "express";
 import { OrderServices } from "./order.service";
+import { Order } from "./order.model";
+import { Product } from "../../modules/product/product.model";
 
 
-    const createOrder = async (req: Request, res: Response) => {
+    const createOrder = async (req: Request, res: Response,) => {
     const orderData = req.body;
     const result = await OrderServices.createOrder(orderData);
-  
+    // Reduce the quantity in the inventory
+
+
     res.json({
       success: true,
       message: "Order is created successfully !",
       data: result,
     });
   };
+
+
+
+  //  new api invontery 
+
+  
+
+ const createOrders = async (req: Request, res: Response) => {
+  try {
+    
+    const { productId, quantity } = req.body;
+
+    const product = await Order.findById(productId);
+    if (!product) {
+      return res.status(404).send('Product not found');
+    }
+
+    if (product.quantity < quantity) {
+      return res.status(400).send('Not enough products in stock');
+    }
+
+    const totalPrice = product.price * quantity;
+
+    const order = new Order({
+      productId,
+      quantity,
+      totalPrice
+    });
+
+    
+
+    await product.save();
+    await order.save();
+
+    res.status(201).send(order);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+
+
+  
 
 
   // Order allProducg 
@@ -61,7 +108,8 @@ import { OrderServices } from "./order.service";
   export const OrderControllers = {
     createOrder,
     getAllOrder,
-    getOrderEmail
+    getOrderEmail,
+    createOrders
     // getProductId,
     // deleteProductId,
     // putProductId
