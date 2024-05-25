@@ -10,7 +10,7 @@ const router = express.Router();
 router.post("/",OrderControllers.createOrder);
   router.get("/", OrderControllers.getAllOrder);
  router.get("/:orderemail", OrderControllers.getOrderEmail);
-  router.get("/quantity", OrderControllers.createOrders);
+  // router.get("/quantity", OrderControllers.createOrders);
 //  router.delete("/:productId", ProductControllers.deleteProductId);
 //  router.put("/:productId", ProductControllers.putProductId);
 
