@@ -24,38 +24,38 @@ import { Product } from "../../modules/product/product.model";
 
   
 
- const createOrders = async (req: Request, res: Response) => {
-  try {
+//  const createOrders = async (req: Request, res: Response) => {
+//   try {
     
-    const { productId, quantity } = req.body;
+//     const { productId, quantity } = req.body;
 
-    const product = await Order.findById(productId);
-    if (!product) {
-      return res.status(404).send('Product not found');
-    }
+//     const product = await Product.findById(productId);
+//     if (!product) {
+//       return res.status(404).send('Product not found');
+//     }
 
-    if (product.quantity < quantity) {
-      return res.status(400).send('Not enough products in stock');
-    }
+//     if (product.quantity < quantity) {
+//       return res.status(400).send('Not enough products in stock');
+//     }
 
-    const totalPrice = product.price * quantity;
+//     const totalPrice = product.price * quantity;
 
-    const order = new Order({
-      productId,
-      quantity,
-      totalPrice
-    });
+//     const product = new Product ({
+//       productId,
+//       quantity,
+//       totalPrice
+//     });
 
     
 
-    await product.save();
-    await order.save();
+//     await product.save();
+//     await product.save();
 
-    res.status(201).send(order);
-  } catch (error) {
-    res.status(500).send(error);
-  }
-};
+//     res.status(201).send(product);
+//   } catch (error) {
+//     res.status(500).send(error);
+//   }
+// };
 
 
 
@@ -109,7 +109,7 @@ import { Product } from "../../modules/product/product.model";
     createOrder,
     getAllOrder,
     getOrderEmail,
-    createOrders
+    // createOrders
     // getProductId,
     // deleteProductId,
     // putProductId
