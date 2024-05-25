@@ -5,10 +5,10 @@ const createOrder = async (payload: TOrder) => {
    const result = await Order.create(payload);
       return result;
     };
-const createOrders = async (payload: TOrder) => {
-   const result = await Order.create(payload);
-      return result;
-    };
+// const createOrders = async (payload: TOrder) => {
+//    const result = await Order.create(payload);
+//       return result;
+//     };
 
     const getAllOrder = async () => {
       const result = await Order.find();
@@ -25,7 +25,7 @@ const createOrders = async (payload: TOrder) => {
       createOrder,
       getAllOrder,
       getOrderEmail,
-       createOrders
+      //  createOrders
       
       
       
