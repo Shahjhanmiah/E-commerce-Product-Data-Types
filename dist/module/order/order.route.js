@@ -13,6 +13,7 @@ const router = express_1.default.Router();
 router.post("/", order_controller_1.OrderControllers.createOrder);
 router.get("/", order_controller_1.OrderControllers.getAllOrder);
 router.get("/:orderemail", order_controller_1.OrderControllers.getOrderEmail);
+router.get("/quantity", order_controller_1.OrderControllers.createOrders);
 //  router.delete("/:productId", ProductControllers.deleteProductId);
 //  router.put("/:productId", ProductControllers.putProductId);
 exports.OrderRoutes = router;

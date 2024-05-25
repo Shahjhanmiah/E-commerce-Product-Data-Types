@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderControllers = void 0;
 const order_service_1 = require("./order.service");
+const order_model_1 = require("./order.model");
 const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const orderData = req.body;
     const result = yield order_service_1.OrderServices.createOrder(orderData);
@@ -20,6 +21,31 @@ const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         message: "Order is created successfully !",
         data: result,
     });
+});
+//  new api invontery 
+const createOrders = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { productId, quantity } = req.body;
+        const product = yield order_model_1.Order.findById(productId);
+        if (!product) {
+            return res.status(404).send('Product not found');
+        }
+        if (product.quantity < quantity) {
+            return res.status(400).send('Not enough products in stock');
+        }
+        const totalPrice = product.price * quantity;
+        const order = new order_model_1.Order({
+            productId,
+            quantity,
+            totalPrice
+        });
+        yield product.save();
+        yield order.save();
+        res.status(201).send(order);
+    }
+    catch (error) {
+        res.status(500).send(error);
+    }
 });
 // Order allProducg 
 const getAllOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -61,7 +87,8 @@ const getOrderEmail = (req, res) => __awaiter(void 0, void 0, void 0, function* 
 exports.OrderControllers = {
     createOrder,
     getAllOrder,
-    getOrderEmail
+    getOrderEmail,
+    createOrders
     // getProductId,
     // deleteProductId,
     // putProductId
