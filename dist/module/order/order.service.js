@@ -15,10 +15,10 @@ const createOrder = (payload) => __awaiter(void 0, void 0, void 0, function* () 
     const result = yield order_model_1.Order.create(payload);
     return result;
 });
-const createOrders = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield order_model_1.Order.create(payload);
-    return result;
-});
+// const createOrders = async (payload: TOrder) => {
+//    const result = await Order.create(payload);
+//       return result;
+//     };
 const getAllOrder = () => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield order_model_1.Order.find();
     return result;
@@ -31,5 +31,5 @@ exports.OrderServices = {
     createOrder,
     getAllOrder,
     getOrderEmail,
-    createOrders
+    //  createOrders
 };
