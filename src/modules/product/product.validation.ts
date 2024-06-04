@@ -46,7 +46,7 @@
 //   }
 // };
 
-// async function createProduct(product) {
+// async function createProduct(Product) {
 //     try {
 //       console.log("Validating product data...");
 //       // Parse and validate the data using the Zod schema
