@@ -15,6 +15,8 @@ const reviewSchema = new Schema<TReview>({
     type: String,
     required: true,
   },
+  
+  
 });
 
 const variantSchema = new Schema({

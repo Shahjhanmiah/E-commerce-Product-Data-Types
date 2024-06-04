@@ -19,7 +19,6 @@ export type TReview = {
       inStock: boolean;
     };
     reviews: TReview[];
-    slug: string;
     viewCount: number;
     isDeleted?: boolean;
   };
