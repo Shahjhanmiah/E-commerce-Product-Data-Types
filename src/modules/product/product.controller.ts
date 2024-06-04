@@ -119,7 +119,7 @@ const createProduct = async (req: Request, res: Response) => {
 
 
 
-  
+
 
   export const ProductControllers = {
     createProduct,
