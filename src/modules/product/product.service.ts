@@ -19,7 +19,7 @@ const getProductId = async (id: string) => {
 // Product delete
 
 const deleteProductId = async (id: string) => {
-  const result = await Product.deleteOne({ id }, { isDeleted: true });
+  const result = await Product.findOneAndUpdate({ id }, { isDeleted: true });
   return result;
 };
 
