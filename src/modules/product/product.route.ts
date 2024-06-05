@@ -4,7 +4,7 @@ const router = express.Router();
 // import { MovieControllers } from '../movie.controller';
 import { ProductControllers } from "./product.controller";
 
-router.post("/", ProductControllers.createProduct);
+router.post("/",ProductControllers.createProduct);
 router.get("/", ProductControllers.getAllProduct);
 router.get("/:productId", ProductControllers.getProductId);
 router.delete("/:productId", ProductControllers.deleteProductId);
